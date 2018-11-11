@@ -1,0 +1,77 @@
+version: '3.7'
+
+services:
+  victim_lfi_server_jsp:
+        build: ./victim_lfi_server_jsp
+        ports:
+        - "127.0.0.1:8881:8080"
+        environment:
+        - SERVER_HOST_EXTERNAL_IP=127.0.0.1
+        - SERVER_HOST_EXTERNAL_PORT=8881
+        - SERVER_DOCKER_INTERNAL_IP=172.18.0.2
+        - SERVER_DOCKER_INTERNAL_PORT=8080
+        volumes:
+        - type: bind
+          source: ./victim_lfi_server_jsp/webapp
+          target: /usr/local/tomcat/webapps/webapp
+        networks:
+          lfi_network:
+            ipv4_address: 172.18.0.2
+
+  attacker_server_jsp:
+        build: ./attacker_server_jsp
+        ports:
+        - "127.0.0.1:8882:8080"
+        environment:
+        - SERVER_HOST_EXTERNAL_IP=127.0.0.1
+        - SERVER_HOST_EXTERNAL_PORT=8882
+        - SERVER_DOCKER_INTERNAL_IP=172.18.0.3
+        - SERVER_DOCKER_INTERNAL_PORT=8080
+        volumes:
+        - type: bind
+          source: ./attacker_server_jsp/webapp
+          target: /usr/local/tomcat/webapps/webapp
+        networks:
+          lfi_network:
+            ipv4_address: 172.18.0.3
+
+  victim_lfi_server_php:
+        build: ./victim_lfi_server_php
+        ports: 
+        - "127.0.0.1:8883:80"
+        environment:
+        - SERVER_HOST_EXTERNAL_IP=127.0.0.1
+        - SERVER_HOST_EXTERNAL_PORT=8883  
+        - SERVER_DOCKER_INTERNAL_IP=172.18.0.4
+        - SERVER_DOCKER_INTERNAL_PORT=80
+        volumes:
+        - type: bind
+          source: ./victim_lfi_server_php/src
+          target: /var/www/html  
+        networks:
+          lfi_network:
+            ipv4_address: 172.18.0.4
+
+  attacker_server_php:
+        build: ./attacker_server_php
+        ports:
+        - "127.0.0.1:8884:80"
+        environment:
+        - SERVER_HOST_EXTERNAL_IP=127.0.0.1
+        - SERVER_HOST_EXTERNAL_PORT=8884
+        - SERVER_DOCKER_INTERNAL_IP=172.18.0.5
+        - SERVER_DOCKER_INTERNAL_PORT=80
+        volumes:
+        - type: bind
+          source: ./attacker_server_php/src
+          target: /var/www/html  
+        networks:
+          lfi_network:
+            ipv4_address: 172.18.0.5
+
+networks:
+  lfi_network:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.18.0.0/16
