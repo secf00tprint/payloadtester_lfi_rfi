@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+
+@if (HttpContext.Request.Query["test"] != default(Microsoft.AspNetCore.Http.IQueryCollection))
+{
+    @Html.Partial(HttpContext.Request.Query["test"])
+}
+
+
+<h2>ASP.NET LFI Payload Tester</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" asp-for="Upload" />
+    <input type="submit" />
+</form>
