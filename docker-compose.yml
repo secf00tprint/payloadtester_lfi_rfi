@@ -16,7 +16,7 @@ services:
           source: ./victim_lfi_server_jsp/webapp
           target: /usr/local/tomcat/webapps/webapp
         networks:
-          lfi_network:
+          lfi_linux_network:
             ipv4_address: 172.18.0.2
 
   attacker_server_jsp:
@@ -34,7 +34,7 @@ services:
           source: ./attacker_server_jsp/webapp
           target: /usr/local/tomcat/webapps/webapp
         networks:
-          lfi_network:
+          lfi_linux_network:
             ipv4_address: 172.18.0.3
 
   victim_lfi_server_php:
@@ -52,7 +52,7 @@ services:
           source: ./victim_lfi_server_php/src
           target: /var/www/html  
         networks:
-          lfi_network:
+          lfi_linux_network:
             ipv4_address: 172.18.0.4
 
   attacker_server_php:
@@ -70,11 +70,11 @@ services:
           source: ./attacker_server_php/src
           target: /var/www/html  
         networks:
-          lfi_network:
+          lfi_linux_network:
             ipv4_address: 172.18.0.5
 
 networks:
-  lfi_network:
+  lfi_linux_network:
     driver: bridge
     ipam:
      config:
