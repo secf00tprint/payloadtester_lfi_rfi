@@ -2,6 +2,7 @@ version: '3.7'
 
 services:
   victim_lfi_server_jsp:
+        container_name: "victim.lfi.jsp.tld"
         build: ./victim_lfi_server_jsp
         ports:
         - "127.0.0.1:8881:8080"
@@ -19,6 +20,7 @@ services:
             ipv4_address: 172.18.0.2
 
   attacker_server_jsp:
+        container_name: "attacker.lfi.jsp.tld"
         build: ./attacker_server_jsp
         ports:
         - "127.0.0.1:8882:8080"
@@ -36,6 +38,7 @@ services:
             ipv4_address: 172.18.0.3
 
   victim_lfi_server_php:
+        container_name: "victim.lfi.php.tld"
         build: ./victim_lfi_server_php
         ports: 
         - "127.0.0.1:8883:80"
@@ -53,6 +56,7 @@ services:
             ipv4_address: 172.18.0.4
 
   attacker_server_php:
+        container_name: "attacker.lfi.php.tld"
         build: ./attacker_server_php
         ports:
         - "127.0.0.1:8884:80"
