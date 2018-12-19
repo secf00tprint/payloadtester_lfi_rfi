@@ -2,12 +2,13 @@ version: '3.6'
 
 services:
   victim_lfi_server_asp:
-        environment:
-        - SERVER_HOST_EXTERNAL_IP=${DOCKER_VM_IP}
         container_name: "victim.lfi.asp.tld"
         build: ./victim_lfi_server_asp
         ports:
         - "8080:5002"
+        environment:
+        - SERVER_HOST_EXTERNAL_IP=${DOCKER_VM_IP}
+        - SERVER_HOST_EXTERNAL_PORT=8080
 
 networks:
   default:
