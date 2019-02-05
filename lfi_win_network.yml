@@ -9,6 +9,15 @@ services:
         environment:
         - SERVER_HOST_EXTERNAL_IP=${DOCKER_VM_IP}
         - SERVER_HOST_EXTERNAL_PORT=8080
+  attacker_server_win:
+        container_name: "attacker.lfi.win.tld"
+        build: ./attacker_server_win
+        ports:
+        - "8081:5002"
+        environment:
+        - SERVER_HOST_EXTERNAL_IP=${DOCKER_VM_IP}
+        - SERVER_HOST_EXTERNAL_PORT=8081
+ 
 
 networks:
   default:

