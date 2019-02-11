@@ -67,7 +67,7 @@ services:
         - SERVER_DOCKER_INTERNAL_PORT=80
         volumes:
         - type: bind
-          source: ./attacker_server_php/src
+          source: ./attacker_server_php/src/payloads
           target: /var/www/html  
         networks:
           lfi_linux_network:

