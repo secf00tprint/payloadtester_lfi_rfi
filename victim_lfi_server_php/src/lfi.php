@@ -29,5 +29,16 @@
             <input type="submit" value="Upload File" name="submit">
         </form>
     </div>
+    <br/>
+    <div>
+        <form method="get">
+            Show help:
+            <select name="page">
+                <option value="introduction.md">Introduction</option>
+                <option value="secondchapter.md">Second Chapter</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
     </body>
 </html>
