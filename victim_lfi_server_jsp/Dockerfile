@@ -1,4 +1,4 @@
-FROM tomcat:7.0.90
+FROM tomcat:9.0.21
 
 COPY start.sh .
 CMD ["./start.sh"]
