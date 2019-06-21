@@ -15,6 +15,9 @@ services:
         - type: bind
           source: ./victim_lfi_server_jsp/webapp
           target: /usr/local/tomcat/webapps/webapp
+        - type: bind
+          source: ./victim_lfi_server_jsp/work
+          target: /usr/local/tomcat/work
         networks:
           lfi_linux_network:
             ipv4_address: 172.18.0.2
