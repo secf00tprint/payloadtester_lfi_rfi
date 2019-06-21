@@ -9,7 +9,9 @@ docker exec -ti <id> /bin/bash
 
 # Problematic code
 
+```
 <?php
 $secret_file = $_GET['secret_file'];
 include ( $secret_file);
 ?>
+```
