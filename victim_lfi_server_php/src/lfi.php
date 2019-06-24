@@ -4,12 +4,15 @@
     </head>
     <body>
     <?php
+        // Problematic code snippet:
+        // begin
         if ( isset( $_GET['language'] ) ) {
         include( $_GET['language'] . '.php' );
         }
         if ( isset( $_GET['page'] ) ) {
-        include( $_GET['page']);
-    }
+            include( $_GET['page']);
+        }
+        // end 
     ?>
     <div>
         <form method="get">
