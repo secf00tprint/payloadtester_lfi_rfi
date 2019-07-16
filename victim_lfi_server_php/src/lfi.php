@@ -4,15 +4,36 @@
     </head>
     <body>
     <?php
-        // Problematic code snippet:
-        // begin
         if ( isset( $_GET['language'] ) ) {
-        include( $_GET['language'] . '.php' );
+            echo 'Included with <pre style="display:inline">include</pre>';
+            echo '<pre>';
+            // Problematic code snippet:
+            // Example: include statement + adding of file extension 
+            // begin
+            include( $_GET['language'] . '.php' );
+            // end
+            echo '</pre>';
         }
         if ( isset( $_GET['page'] ) ) {
-            include( $_GET['page']);
+            echo 'Included with <pre style="display:inline">include</pre>';
+            echo '<pre>';
+            // Problematic code snippet:
+            // Example: include statement wo any obstacles
+            // begin               
+            include( $_GET['page'] );
+            // end
+            echo '</pre>';
         }
-        // end 
+        if ( isset( $_GET['require'] ) ) {
+            echo 'Included with <pre style="display:inline">require</pre>';
+            echo '<pre>';
+            // Problematic code snippet:
+            // Example: require statement
+            // begin
+            require( $_GET['require'] );
+            // end
+            echo '</pre>';
+        }
     ?>
     <div>
         <form method="get">
