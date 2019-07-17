@@ -1,11 +1,16 @@
 # Installation
 
-Install Docker 
+- Install Docker
+- If you want to use the windows network on a non Windows OS also install [VirtualBox](https://www.virtualbox.org/) 
 
 ## Ubuntu
 
 Check if you have docker-machine and docker-compose also installed. 
 Notice that if not added to docker group, docker has to be run with sudo.
+
+## Windows
+
+Using [Cmder](https://cmder.net/) on Windows you can run `docker-compose -f lfi_linux_network.yml up --build` to run the linux network. 
 
 # Payloads
 
