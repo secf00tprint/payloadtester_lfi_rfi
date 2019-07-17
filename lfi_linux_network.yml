@@ -54,6 +54,9 @@ services:
         - type: bind
           source: ./victim_lfi_server_php/src
           target: /var/www/html  
+        - type: bind
+          source: ./victim_lfi_server_php/config
+          target: /usr/local/etc/php
         networks:
           lfi_linux_network:
             ipv4_address: 172.18.0.4
