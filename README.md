@@ -1,6 +1,6 @@
 # Installation
 
-- Install Docker
+- Install Docker (verified with version 2.0.0.3)
 - If you want to use the windows network on a non Windows OS also install [VirtualBox](https://www.virtualbox.org/) 
 
 ## Ubuntu
