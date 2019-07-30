@@ -1,6 +1,6 @@
-#FROM microsoft/dotnet:2.1.403-sdk
-#FROM microsoft/dotnet:2.2-sdk
 FROM microsoft/dotnet-framework:4.7.2-sdk
+
+LABEL maintainer="secf00tprint@gmail.com"
 
 WORKDIR /webapp
 

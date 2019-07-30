@@ -1,4 +1,7 @@
 FROM httpd:2.4.39
+
+LABEL maintainer="secf00tprint@gmail.com"
+
 # libwww-perl is needed to include external urls (causing rfi)
 RUN apt-get update && apt-get install -y libwww-perl
 # Activate cgi
