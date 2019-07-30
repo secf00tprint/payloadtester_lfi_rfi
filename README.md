@@ -110,7 +110,7 @@ Upload runme.jsp from attacker_server_jsp for Remote Code Execution:
 
 ## CGI / Perl
 
-Single Container: Start it in folder `victim_fi_server_cgi_perl`.
+Single Container: Start it in the folder `victim_fi_server_cgi_perl`.
 
 ### RFI
 
