@@ -1,7 +1,8 @@
 # Installation
 
 - Install Docker (verified with version 2.0.0.3)
-- If you want to use the windows network on Aa non Windows OS also install [VirtualBox](https://www.virtualbox.org/) 
+- To run the linux network use `start_linux_network.sh` (see OS subsections if something is missing).
+- The windows network examples were only checked on non-windows machines. For further instructions see the ASPX section.
 
 ## Ubuntu
 
@@ -10,7 +11,7 @@ Notice that if not added to docker group, docker has to be run with sudo.
 
 ## Windows
 
-Using [Cmder](https://cmder.net/) on Windows you can run `docker-compose -f lfi_linux_network.yml up --build` to run the linux network. 
+To run the linux network [Cmder](https://cmder.net/) was used on Windows. Instead of `start_linux_network.sh` run `docker-compose -f lfi_linux_network.yml up --build` to start. 
 
 # Examples
 
@@ -134,7 +135,8 @@ Another single container: To Start goto `victim_fi_server_rails` folder.
 
 ## ASP / Razor
 
-Use [https://github.com/StefanScherer/windows-docker-machine](https://github.com/StefanScherer/windows-docker-machine) to get a windows docker environment on a non-windows machine.
+Only verified on non-Windows machines. If you want to use this network also install [VirtualBox](https://www.virtualbox.org/) 
+Use [https://github.com/StefanScherer/windows-docker-machine](https://github.com/StefanScherer/windows-docker-machine) to get the docker environment.
 
 Then you can start a windows ASPX Razor network with a victim machine (use `start_win_network.sh` or `docker-compose -f lfi_win_network.yml up --build`). After that you can verify the following payloads:
 
